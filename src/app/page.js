@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default async function Home({ searchParams }) {
   const filter = (await searchParams).filter;
-  const { rows } = await sql`SELECT * FROM products WHERE category = ${filter}`;
+  const { rows } = await sql`SELECT * FROM products`;
   return (
     <Container>
       <div className="py-5 space-y-5">
