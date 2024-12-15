@@ -1,15 +1,12 @@
 import { sql } from "@vercel/postgres";
 
 export default async function Home() {
-  const { rows } = await sql`SELECT * FROM productrequests `;
+  const { rows } = await sql`SELECT * FROM products`;
 
-  // const currentUser = rows.filter((user) => user.username === "jpacho1234");
-
-  // console.log(currentUser);
+  console.log(rows);
   return (
     <div>
-      <h1>Hello World</h1>
-      <h2>This is the current user</h2>
+      <h1>Home</h1>
     </div>
   );
 }
