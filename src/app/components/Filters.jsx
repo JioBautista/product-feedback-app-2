@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Filters() {
   const buttons = [
-    { name: "All", link: "/?filter=all" },
+    { name: "All", link: "/" },
     { name: "UI", link: "/?filter=ux" },
     { name: "UX", link: "/?filter=ux" },
     { name: "Enhancement", link: "/?filter=enhancement" },
