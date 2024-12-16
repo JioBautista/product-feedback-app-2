@@ -9,7 +9,7 @@ export default function NavBar() {
   const [isOpen, setOpen] = useState(false);
   return (
     <>
-      <div className="bg-gradient-to-r to-[#E84D70] from-[#28A7ED] via-[#A337F6] relative z-10 py-5">
+      <div className="bg-gradient-to-r to-[#E84D70] from-[#28A7ED] via-[#A337F6] relative py-5 z-20">
         <Container>
           <div className="flex items-center justify-between">
             <h1 className="text-white font-bold">Feedback Board</h1>
@@ -37,8 +37,8 @@ export default function NavBar() {
       </div>
       {isOpen && (
         <>
-          <div className="absolute bg-black opacity-25 inset-0"></div>
-          <div className="bg-[#F7F8FD] p-5 absolute right-0 h-screen max-w-[270px] space-y-5">
+          <div className="absolute bg-black opacity-25 inset-0 z-10"></div>
+          <div className="bg-[#F7F8FD] p-5 absolute right-0 h-screen max-w-[270px] space-y-5 z-10">
             <Filters />
             <Roadmap />
           </div>
