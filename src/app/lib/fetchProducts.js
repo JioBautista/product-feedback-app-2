@@ -1,5 +1,5 @@
 import { sql } from "@vercel/postgres";
-export default async function fetchData(filter) {
+export default async function fetchProducts(filter) {
   if (filter) {
     const { rows } =
       await sql`SELECT * FROM products WHERE category = ${filter}`;
