@@ -3,10 +3,11 @@ import Container from "./components/Container";
 import Product from "./components/Product";
 import AddFeedback from "./components/AddFeedback";
 import Image from "next/image";
+import fetchData from "./lib/fetchData";
 
 export default async function Home({ searchParams }) {
   const filter = (await searchParams).filter;
-  const { rows } = await sql`SELECT * FROM products`;
+  const rows = await fetchData(filter);
   return (
     <Container>
       <div className="py-5 space-y-5">
