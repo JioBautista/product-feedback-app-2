@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import NavBar from "./navigationbar/Navbar";
-import Sort from "./components/Sort";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,7 +24,6 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} bg-[#F7F8FD]`}
       >
         <NavBar />
-        <Sort />
         {children}
       </body>
     </html>

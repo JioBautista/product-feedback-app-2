@@ -1,13 +1,18 @@
 "use client";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 export default function Dropdown() {
   const [isOpen, setOpen] = useState(false);
   const [sort, isSorted] = useState("Most Upvotes");
   const buttonStyles = "text-start text-gray-500";
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const search = searchParams.get("filter");
 
   function handler(string) {
     isSorted(string);
     setOpen(!isOpen);
+    router.push(`/?sort=${string}`);
   }
   return (
     <>
