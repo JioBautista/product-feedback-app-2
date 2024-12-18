@@ -7,8 +7,12 @@ export default function Filters() {
     { name: "UX", link: "/?filter=ux" },
     { name: "Enhancement", link: "/?filter=enhancement" },
     { name: "Bug", link: "/?filter=bug" },
-    { name: "Feature", link: "/?filter=feature" },
+    {
+      name: "Feature",
+      link: `/?filter=feature`,
+    },
   ];
+
   return (
     <div className="bg-white rounded-lg flex items-center flex-wrap gap-2 p-5">
       {buttons.map((elements) => (

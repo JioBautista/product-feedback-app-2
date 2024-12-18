@@ -7,7 +7,7 @@ export default function Dropdown() {
   const buttonStyles = "text-start text-gray-500";
   const router = useRouter();
   const searchParams = useSearchParams();
-  const search = searchParams.get("filter");
+  const filter = searchParams.get("filter");
 
   function handler(string) {
     isSorted(string);
