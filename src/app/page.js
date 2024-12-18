@@ -6,13 +6,7 @@ import Sort from "./components/Sort";
 
 export default async function Home({ searchParams }) {
   const { filter, sort } = await searchParams;
-  const rows = await fetchProducts(filter);
-
-  if (sort === "Least Upvotes") {
-    rows.sort((a, b) => a.upvotes - b.upvotes);
-  } else if (sort === "Most Upvotes") {
-    rows.sort((a, b) => b.upvotes - a.upvotes);
-  }
+  const rows = await fetchProducts(filter, sort);
   return (
     <>
       <Sort />

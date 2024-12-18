@@ -6,8 +6,6 @@ export default function Dropdown() {
   const [sort, isSorted] = useState("Most Upvotes");
   const buttonStyles = "text-start text-gray-500";
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const filter = searchParams.get("filter");
 
   function handler(string) {
     isSorted(string);
