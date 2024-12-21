@@ -16,7 +16,7 @@ export default async function ProductDetail({ params }) {
             Go Back
           </Link>
 
-          <Link href={`/edit/${productid}`}>
+          <Link href={`/${productid}/edit`}>
             <EditButton />
           </Link>
         </div>
