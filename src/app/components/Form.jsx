@@ -1,4 +1,5 @@
 import createFeedback from "../lib/createFeedback";
+import deleteFeedback from "../lib/deleteFeedback";
 
 export default function Form({ data }) {
   const labelStyles = "font-bold";
@@ -80,19 +81,25 @@ export default function Form({ data }) {
           type="number"
           defaultValue={0}
         />
-
         <div className="flex flex-col gap-5">
           <button
             type="submit"
             className="bg-[#AD1FEA] text-white p-3 rounded-xl font-bold"
           >
-            Add Feedback
+            {data ? "Save Changes" : "Add Feedback"}
           </button>
 
           <button className="bg-[#3A4374] text-white p-3 rounded-xl font-bold">
             Cancel
           </button>
         </div>
+      </form>
+      <form action={deleteFeedback}>
+        {data && (
+          <button className="bg-[#D73737] text-white p-3 rounded-xl font-bold">
+            Delete
+          </button>
+        )}
       </form>
     </div>
   );
