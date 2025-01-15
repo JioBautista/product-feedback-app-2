@@ -8,6 +8,8 @@ export default function Form({ data, fn }) {
     null,
     data ? data[0].productid : null
   );
+  const categories = ["Feature", "UI", "UX", "Enhancement", "Bug"];
+  const status = ["Suggestion", "Planned", "In-Progress", "Live"];
   return (
     <div className="bg-white p-5 rounded-md space-y-5">
       {data ? (
@@ -33,46 +35,7 @@ export default function Form({ data, fn }) {
         <Label>
           Category
           <p className={pStyles}>Choose a category for your feedback</p>
-          <Select
-            name={"category"}
-            defaultValue={data ? data[0].category : null}
-            value={data ? data[0].category : null}
-          >
-            <option
-              value={"Feature"}
-              selected={
-                data && data[0].category === "Feature" ? "selected" : null
-              }
-            >
-              Feature
-            </option>
-            <option
-              value={"UI"}
-              selected={data && data[0].category === "UI" ? "selected" : null}
-            >
-              UI
-            </option>
-            <option
-              value={"UX"}
-              selected={data && data[0].category === "UX" ? "selected" : null}
-            >
-              UX
-            </option>
-            <option
-              value={"Enhancement"}
-              selected={
-                data && data[0].category === "Enhancement" ? "selected" : null
-              }
-            >
-              Enhancement
-            </option>
-            <option
-              value={"Bug"}
-              selected={data && data[0].category === "Bug" ? "selected" : null}
-            >
-              Bug
-            </option>
-          </Select>
+          <Select name={"category"} data={data} option={categories} />
         </Label>
 
         {/* UPDATE STATUS only display Block when defaultValue is true */}
@@ -80,16 +43,7 @@ export default function Form({ data, fn }) {
           <Label>
             Update Status
             <p className={pStyles}>Change feature state</p>
-            <select
-              className="w-full bg-[#F7F8FD] px-5 py-3 font-normal rounded-md mb-5"
-              defaultValue={"suggestion"}
-              name="status"
-            >
-              <option value={"Suggestion"}>Suggestion</option>
-              <option value={"Planned"}>Planned</option>
-              <option value={"In-Progress"}>In-Progress</option>
-              <option value={"Live"}>Live</option>
-            </select>
+            <Select name={"status"} option={status} />
           </Label>
         ) : null}
 
