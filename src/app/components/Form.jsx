@@ -12,7 +12,7 @@ export default function Form({ data }) {
   return (
     <div className="bg-white p-5 rounded-md space-y-5">
       {data ? (
-        <h1 className="font-bold mb-5 text-lg">`Editing ${data[0].title}`</h1>
+        <h1 className="font-bold mb-5 text-lg">Editing {data[0].title}</h1>
       ) : (
         <h1>Create New Feedback</h1>
       )}
