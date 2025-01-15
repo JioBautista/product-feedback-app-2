@@ -7,7 +7,6 @@ import Sort from "./components/Sort";
 export default async function Home({ searchParams }) {
   const { filter, sort } = await searchParams;
   const rows = await fetchProducts(filter, sort);
-  console.log(rows);
   return (
     <>
       <Sort />

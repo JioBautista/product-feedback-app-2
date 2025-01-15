@@ -1,6 +1,7 @@
 import deleteFeedback from "../lib/deleteFeedback";
 import Label from "./Label";
 import Select from "./Select";
+import Button from "./Button";
 
 export default function Form({ data, fn }) {
   const pStyles = "text-gray-500 font-normal mb-3";
@@ -15,7 +16,7 @@ export default function Form({ data, fn }) {
       {data ? (
         <h1 className="font-bold mb-5 text-lg">Editing '{data[0].title}'</h1>
       ) : (
-        <h1>Create New Feedback</h1>
+        <h1 className="font-bold mb-5 text-lg">Create New Feedback</h1>
       )}
 
       <form action={fn}>
@@ -43,7 +44,7 @@ export default function Form({ data, fn }) {
           <Label>
             Update Status
             <p className={pStyles}>Change feature state</p>
-            <Select name={"status"} option={status} />
+            <Select name={"status"} option={status} data={data} />
           </Label>
         ) : null}
 
@@ -72,29 +73,16 @@ export default function Form({ data, fn }) {
 
         {/* FORM BUTTONS */}
         <div className="flex flex-col gap-5">
-          <button
-            type="submit"
-            className="bg-[#AD1FEA] text-white p-3 rounded-xl font-bold"
-          >
+          <Button bg={"[#AD1FEA]"}>
             {data ? "Save Changes" : "Add Feedback"}
-          </button>
-
-          <button className="bg-[#3A4374] text-white p-3 rounded-xl font-bold">
-            Cancel
-          </button>
+          </Button>
+          <Button bg={"[#3A4374]"}>Cancel</Button>
         </div>
       </form>
 
       {/* SEPARATE FORM FOR DELETE BUTTON ON EDIT */}
       <form action={deleteFeedbackWithID}>
-        {data && (
-          <button
-            className="bg-[#D73737] text-white p-3 rounded-xl font-bold w-full"
-            type="submit"
-          >
-            Delete
-          </button>
-        )}
+        {data && <Button bg={"[#D73737]"}>Delete</Button>}
       </form>
     </div>
   );
