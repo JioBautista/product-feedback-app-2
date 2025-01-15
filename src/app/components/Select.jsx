@@ -7,6 +7,8 @@ export default function Select({ children, defaultValue, name, value }) {
     <select
       className="w-full bg-[#F7F8FD] px-5 py-3 font-normal rounded-md mb-5"
       name={name}
+      value={value ? value : null}
+      defaultValue={defaultValue ? defaultValue : null}
     >
       {children}
     </select>
