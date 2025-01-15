@@ -1,9 +1,8 @@
-import createFeedback from "../lib/createFeedback";
 import deleteFeedback from "../lib/deleteFeedback";
 import Label from "./Label";
 import Select from "./Select";
 
-export default function Form({ data }) {
+export default function Form({ data, fn }) {
   const pStyles = "text-gray-500 font-normal mb-3";
   const deleteFeedbackWithID = deleteFeedback.bind(
     null,
@@ -12,19 +11,19 @@ export default function Form({ data }) {
   return (
     <div className="bg-white p-5 rounded-md space-y-5">
       {data ? (
-        <h1 className="font-bold mb-5 text-lg">Editing {data[0].title}</h1>
+        <h1 className="font-bold mb-5 text-lg">Editing '{data[0].title}'</h1>
       ) : (
         <h1>Create New Feedback</h1>
       )}
 
-      <form action={createFeedback}>
+      <form action={fn}>
         {/* FEEDBACK TITLE */}
         <Label>
           Feedback Title
           <p className={pStyles}>Add a short, descriptive headline</p>
           <input
             type="text"
-            className="px-5 py-3 bg-gray-100 rounded-md w-full mb-5"
+            className="px-5 py-3 bg-[#F7F8FD] rounded-md w-full mb-5 font-normal"
             name="title"
             defaultValue={data ? data[0].title : null}
           />
@@ -77,20 +76,22 @@ export default function Form({ data }) {
         </Label>
 
         {/* UPDATE STATUS only display Block when defaultValue is true */}
-        <Label>
-          Update Status
-          <p className={pStyles}>Change feature state</p>
-          <select
-            className="w-full bg-gray-100 px-5 py-3 font-normal rounded-md mb-5"
-            defaultValue={"suggestion"}
-            name="status"
-          >
-            <option value={"Suggestion"}>Suggestion</option>
-            <option value={"Planned"}>Planned</option>
-            <option value={"In-Progress"}>In-Progress</option>
-            <option value={"Live"}>Live</option>
-          </select>
-        </Label>
+        {data ? (
+          <Label>
+            Update Status
+            <p className={pStyles}>Change feature state</p>
+            <select
+              className="w-full bg-[#F7F8FD] px-5 py-3 font-normal rounded-md mb-5"
+              defaultValue={"suggestion"}
+              name="status"
+            >
+              <option value={"Suggestion"}>Suggestion</option>
+              <option value={"Planned"}>Planned</option>
+              <option value={"In-Progress"}>In-Progress</option>
+              <option value={"Live"}>Live</option>
+            </select>
+          </Label>
+        ) : null}
 
         {/* FEEDBACK DETAILS */}
         <Label>
@@ -101,8 +102,9 @@ export default function Form({ data }) {
           </p>
           <textarea
             rows={5}
-            className="bg-gray-100 p-3 rounded-md w-full mb-5"
+            className="bg-[#F7F8FD] p-3 rounded-md w-full mb-5 font-normal"
             name="description"
+            defaultValue={data ? data[0].description : null}
           ></textarea>
         </Label>
 

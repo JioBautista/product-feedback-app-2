@@ -1,6 +1,7 @@
 import Container from "../components/Container";
 import Link from "next/link";
 import Form from "../components/Form";
+import createFeedback from "../lib/createFeedback";
 
 export default function NewFeedback() {
   return (
@@ -9,7 +10,7 @@ export default function NewFeedback() {
         <Link href={"/"} className="p-2 font-bold">
           Go Back
         </Link>
-        <Form />
+        <Form fn={createFeedback} />
       </div>
     </Container>
   );
