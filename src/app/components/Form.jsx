@@ -19,7 +19,6 @@ export default function Form({ data }) {
             type="text"
             className="px-5 py-3 bg-gray-100 rounded-md w-full mb-5"
             name="title"
-            defaultValue={data && data[0].title}
           />
         </Label>
 
@@ -27,45 +26,12 @@ export default function Form({ data }) {
         <Label>
           Category
           <p className={pStyles}>Choose a category for your feedback</p>
-          <Select
-            name={"category"}
-            defaultValue={data && data[0].category}
-            value={data && data[0].category}
-          >
-            <option
-              value={"Feature"}
-              selected={
-                data && data[0].category === "Feature" ? "selected" : null
-              }
-            >
-              Feature
-            </option>
-            <option
-              value={"UI"}
-              selected={data && data[0].category === "UI" ? "selected" : null}
-            >
-              UI
-            </option>
-            <option
-              value={"UX"}
-              selected={data && data[0].category === "UX" ? "selected" : null}
-            >
-              UX
-            </option>
-            <option
-              value={"Enhancement"}
-              selected={
-                data && data[0].category === "Enhancement" ? "selected" : null
-              }
-            >
-              Enhancement
-            </option>
-            <option
-              value={"Bug"}
-              selected={data && data[0].category === "Bug" ? "selected" : null}
-            >
-              Bug
-            </option>
+          <Select name={"category"}>
+            <option value={"Feature"}>Feature</option>
+            <option value={"UI"}>UI</option>
+            <option value={"UX"}>UX</option>
+            <option value={"Enhancement"}>Enhancement</option>
+            <option value={"Bug"}>Bug</option>
           </Select>
         </Label>
 
