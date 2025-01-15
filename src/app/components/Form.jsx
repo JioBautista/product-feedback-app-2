@@ -40,31 +40,35 @@ export default function Form({ data }) {
           >
             <option
               value={"Feature"}
-              selected={data[0].category === "Feature" ? "selected" : null}
+              selected={
+                data && data[0].category === "Feature" ? "selected" : null
+              }
             >
               Feature
             </option>
             <option
               value={"UI"}
-              selected={data[0].category === "UI" ? "selected" : null}
+              selected={data && data[0].category === "UI" ? "selected" : null}
             >
               UI
             </option>
             <option
               value={"UX"}
-              selected={data[0].category === "UX" ? "selected" : null}
+              selected={data && data[0].category === "UX" ? "selected" : null}
             >
               UX
             </option>
             <option
               value={"Enhancement"}
-              selected={data[0].category === "Enhancement" ? "selected" : null}
+              selected={
+                data && data[0].category === "Enhancement" ? "selected" : null
+              }
             >
               Enhancement
             </option>
             <option
               value={"Bug"}
-              selected={data[0].category === "Bug" ? "selected" : null}
+              selected={data && data[0].category === "Bug" ? "selected" : null}
             >
               Bug
             </option>
