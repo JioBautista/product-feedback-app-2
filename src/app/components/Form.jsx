@@ -11,7 +11,11 @@ export default function Form({ data }) {
   );
   return (
     <div className="bg-white p-5 rounded-md space-y-5">
-      <h1>Create New Feedback</h1>
+      {data ? (
+        <h1 className="font-bold mb-5 text-lg">`Editing ${data[0].title}`</h1>
+      ) : (
+        <h1>Create New Feedback</h1>
+      )}
 
       <form action={createFeedback}>
         {/* FEEDBACK TITLE */}
@@ -22,6 +26,7 @@ export default function Form({ data }) {
             type="text"
             className="px-5 py-3 bg-gray-100 rounded-md w-full mb-5"
             name="title"
+            defaultValue={data ? data[0].title : null}
           />
         </Label>
 
@@ -29,12 +34,45 @@ export default function Form({ data }) {
         <Label>
           Category
           <p className={pStyles}>Choose a category for your feedback</p>
-          <Select name={"category"}>
-            <option value={"Feature"}>Feature</option>
-            <option value={"UI"}>UI</option>
-            <option value={"UX"}>UX</option>
-            <option value={"Enhancement"}>Enhancement</option>
-            <option value={"Bug"}>Bug</option>
+          <Select
+            name={"category"}
+            defaultValue={data ? data[0].category : null}
+            value={data ? data[0].category : null}
+          >
+            <option
+              value={"Feature"}
+              selected={
+                data && data[0].category === "Feature" ? "selected" : null
+              }
+            >
+              Feature
+            </option>
+            <option
+              value={"UI"}
+              selected={data && data[0].category === "UI" ? "selected" : null}
+            >
+              UI
+            </option>
+            <option
+              value={"UX"}
+              selected={data && data[0].category === "UX" ? "selected" : null}
+            >
+              UX
+            </option>
+            <option
+              value={"Enhancement"}
+              selected={
+                data && data[0].category === "Enhancement" ? "selected" : null
+              }
+            >
+              Enhancement
+            </option>
+            <option
+              value={"Bug"}
+              selected={data && data[0].category === "Bug" ? "selected" : null}
+            >
+              Bug
+            </option>
           </Select>
         </Label>
 
