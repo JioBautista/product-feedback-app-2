@@ -8,13 +8,7 @@ export default function Form({ data }) {
   const deleteFeedbackWithID = deleteFeedback.bind(null, data[0].productid);
   return (
     <div className="bg-white p-5 rounded-md space-y-5">
-      {data ? (
-        <h1 className="font-bold mb-5 text-lg">
-          `Editing ${data && data[0].title}`
-        </h1>
-      ) : (
-        <h1>Create New Feedback</h1>
-      )}
+      <h1>Create New Feedback</h1>
 
       <form action={createFeedback}>
         {/* FEEDBACK TITLE */}
