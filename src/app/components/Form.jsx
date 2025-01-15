@@ -5,7 +5,7 @@ import Select from "./Select";
 
 export default function Form({ data }) {
   const pStyles = "text-gray-500 font-normal mb-3";
-  const deleteFeedbackWithID = deleteFeedback.bind(null, data[0].productid);
+  // const deleteFeedbackWithID = deleteFeedback.bind(null, data[0].productid);
   return (
     <div className="bg-white p-5 rounded-md space-y-5">
       <h1>Create New Feedback</h1>
@@ -89,7 +89,7 @@ export default function Form({ data }) {
       </form>
 
       {/* SEPARATE FORM FOR DELETE BUTTON ON EDIT */}
-      <form action={deleteFeedbackWithID}>
+      {/* <form action={deleteFeedbackWithID}>
         {data && (
           <button
             className="bg-[#D73737] text-white p-3 rounded-xl font-bold w-full"
@@ -98,7 +98,7 @@ export default function Form({ data }) {
             Delete
           </button>
         )}
-      </form>
+      </form> */}
     </div>
   );
 }
