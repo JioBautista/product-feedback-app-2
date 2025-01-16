@@ -3,12 +3,14 @@ import Product from "./components/Product";
 import fetchProducts from "./lib/fetchProducts";
 import EmptyFeedback from "./components/EmptyFeedback";
 import Sort from "./components/Sort";
+import NavBar from "./navigationbar/Navbar";
 
 export default async function Home({ searchParams }) {
   const { filter, sort } = await searchParams;
   const rows = await fetchProducts(filter, sort);
   return (
     <>
+      <NavBar />
       <Sort />
       <Container>
         <div className="py-5 space-y-5">

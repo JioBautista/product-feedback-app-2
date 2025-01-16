@@ -23,7 +23,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-[#F7F8FD]`}
       >
-        <NavBar />
         {children}
       </body>
     </html>

@@ -12,7 +12,7 @@ export default function Form({ data, fn }) {
   const categories = ["Feature", "UI", "UX", "Enhancement", "Bug"];
   const status = ["Suggestion", "Planned", "In-Progress", "Live"];
   return (
-    <div className="bg-white p-5 rounded-md space-y-5">
+    <div className="bg-white px-8 py-10 rounded-md space-y-5">
       {data ? (
         <h1 className="font-bold mb-5 text-lg">Editing '{data[0].title}'</h1>
       ) : (
