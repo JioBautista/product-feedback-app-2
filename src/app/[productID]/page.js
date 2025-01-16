@@ -2,6 +2,7 @@ import fetchProduct from "../lib/fetchProduct";
 import Product from "../components/Product";
 import Container from "../components/Container";
 import EditButton from "../components/EditButton";
+import Button from "../components/Button";
 import Link from "next/link";
 
 export default async function ProductDetail({ params }) {
@@ -17,7 +18,7 @@ export default async function ProductDetail({ params }) {
           </Link>
 
           <Link href={`/${productid}/edit`}>
-            <EditButton />
+            <Button bg={"bg-[#4661E6]"}>Edit Feedback</Button>
           </Link>
         </div>
         {rows.map((items) => (

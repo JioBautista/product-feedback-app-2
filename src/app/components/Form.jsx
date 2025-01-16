@@ -73,16 +73,16 @@ export default function Form({ data, fn }) {
 
         {/* FORM BUTTONS */}
         <div className="flex flex-col gap-5">
-          <Button bg={"[#AD1FEA]"}>
+          <Button bg={"bg-[#AD1FEA]"}>
             {data ? "Save Changes" : "Add Feedback"}
           </Button>
-          <Button bg={"[#3A4374]"}>Cancel</Button>
+          <Button bg={"bg-[#3A4374]"}>Cancel</Button>
         </div>
       </form>
 
       {/* SEPARATE FORM FOR DELETE BUTTON ON EDIT */}
       <form action={deleteFeedbackWithID}>
-        {data && <Button bg={"[#D73737]"}>Delete</Button>}
+        {data && <Button bg={"bg-[#D73737]"}>Delete</Button>}
       </form>
     </div>
   );

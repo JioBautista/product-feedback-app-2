@@ -1,11 +1,10 @@
 import Link from "next/link";
+import Button from "./Button";
 
 export default function AddFeedback() {
   return (
     <Link href={"/new"}>
-      <button className="p-3 bg-[#AD1FEA] text-white font-bold rounded-xl">
-        + Add Feedback
-      </button>
+      <Button bg={"bg-[#AD1FEA]"}>+ Add Feedback</Button>
     </Link>
   );
 }
