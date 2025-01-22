@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Container from "../components/Container";
 import Button from "../components/Button";
+import Tabs from "../components/Tabs";
 
 export default function Layout({ children }) {
   return (
@@ -23,11 +24,7 @@ export default function Layout({ children }) {
       </div>
 
       <Container>
-        <div className="flex items-center justify-between">
-          <Link href={"/roadmap/live"}>Live</Link>
-          <Link href={"/roadmap/in-progress"}>In Progress</Link>
-          <Link href={"/roadmap/planned"}>Planned</Link>
-        </div>
+        <Tabs />
       </Container>
       {children}
     </div>
