@@ -8,9 +8,10 @@ import NavBar from "./navigationbar/Navbar";
 export default async function Home({ searchParams }) {
   const { filter, sort } = await searchParams;
   const rows = await fetchProducts(filter, sort);
+  console.log(rows);
   return (
     <>
-      <NavBar />
+      <NavBar data={rows} />
       <Sort />
       <Container>
         <div className="py-5 space-y-5">

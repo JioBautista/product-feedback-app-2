@@ -5,7 +5,7 @@ import Roadmap from "../components/Roadmap";
 import Container from "../components/Container";
 import { useState } from "react";
 
-export default function NavBar() {
+export default function NavBar({ data }) {
   const [isOpen, setOpen] = useState(false);
   return (
     <>
@@ -40,7 +40,7 @@ export default function NavBar() {
           <div className="absolute bg-black opacity-25 inset-0 z-10"></div>
           <div className="bg-[#F7F8FD] p-5 absolute right-0 h-screen max-w-[270px] space-y-5 z-10">
             <Filters />
-            <Roadmap />
+            <Roadmap data={data} />
           </div>
         </>
       )}
