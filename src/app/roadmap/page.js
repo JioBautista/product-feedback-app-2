@@ -3,10 +3,12 @@ import Button from "../components/Button";
 
 export default function Roadmap() {
   return (
-    <Container>
-      <div className="border  border-black">
-        <h1>Roadmap</h1>
-      </div>
-    </Container>
+    <div className="hidden">
+      <Container>
+        <div className="border  border-black">
+          <h1>Roadmap</h1>
+        </div>
+      </Container>
+    </div>
   );
 }
