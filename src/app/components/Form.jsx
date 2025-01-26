@@ -10,7 +10,7 @@ export default function Form({ data, fn }) {
     data ? data[0].productid : null
   );
   const categories = ["Feature", "UI", "UX", "Enhancement", "Bug"];
-  const status = ["Suggestion", "Planned", "In-Progress", "Live"];
+  const status = ["Suggestion", "Planned", "In-progress", "Live"];
   return (
     <div className="bg-white px-8 py-10 rounded-md space-y-5">
       {data ? (
