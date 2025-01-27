@@ -1,5 +1,6 @@
 import Link from "next/link";
 import fetchProducts from "../lib/fetchProducts";
+import Tab from "./Tab";
 
 export default async function Tabs() {
   const data = await fetchProducts();
@@ -12,12 +13,18 @@ export default async function Tabs() {
 
   console.log(data);
   return (
-    <div className="flex items-center justify-between py-5">
-      <Link href={"/roadmap/live"}>Live ({liveData.length})</Link>
-      <Link href={"/roadmap/in-progress"}>
-        In Progress ({inProgressData.length})
-      </Link>
-      <Link href={"/roadmap/planned"}>Planned ({plannedData.length})</Link>
+    <div className="flex items-center">
+      <Tab
+        href={"/roadmap/planned"}
+        text={"Planned"}
+        data={plannedData.length}
+      />
+      <Tab
+        href={"/roadmap/in-progress"}
+        text={"In-Progress"}
+        data={inProgressData.length}
+      />
+      <Tab href={"/roadmap/live"} text={"Live"} data={liveData.length} />
     </div>
   );
 }
