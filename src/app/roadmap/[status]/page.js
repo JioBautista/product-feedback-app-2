@@ -12,11 +12,28 @@ export default async function Tab({ params }) {
 
   const capitalizedStatus = capitalizeFirstLetter(status);
   const rows = await fetchStatus(capitalizedStatus);
+
+  console.log(rows);
   return (
     <div>
       <Container>
-        <div className="space-y-5">
-          {rows ? rows.map((items) => <Product data={items} />) : null}
+        <div className="space-y-10 py-5">
+          <h1 className="text-3xl font-bold tracking-wide">
+            {capitalizedStatus} (
+            {rows
+              ? rows.filter((x) => x.status === capitalizedStatus).length
+              : 0}
+            )
+          </h1>
+          {rows
+            ? rows.map((items) => (
+                <>
+                  <div className="border-t-indigo-500 border-t-8 rounded-md">
+                    <Product data={items} />
+                  </div>
+                </>
+              ))
+            : null}
         </div>
       </Container>
     </div>
