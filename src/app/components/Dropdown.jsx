@@ -1,17 +1,25 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useCallback, useState } from "react";
 export default function Dropdown() {
   const [isOpen, setOpen] = useState(false);
   const [sort, isSorted] = useState("Most Upvotes");
   const buttonStyles = "text-start text-gray-500";
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
 
-  function handler(string) {
-    isSorted(string);
-    setOpen(!isOpen);
-    router.push(`/?sort=${string}`);
-  }
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+      setOpen(!isOpen);
+      isSorted(value);
+      return params.toString();
+    },
+    [searchParams]
+  );
+
   return (
     <>
       <div className="text-white">
@@ -21,13 +29,21 @@ export default function Dropdown() {
         {isOpen && (
           <div className="absolute -bottom-44 bg-white p-5 rounded-xl flex flex-col gap-5 shadow-2xl">
             <button
-              onClick={() => handler("Most Upvotes")}
+              onClick={() =>
+                router.push(
+                  pathname + "?" + createQueryString("sort", "Most Upvotes")
+                )
+              }
               className={buttonStyles}
             >
               Most Upvotes
             </button>
             <button
-              onClick={() => handler("Least Upvotes")}
+              onClick={() =>
+                router.push(
+                  pathname + "?" + createQueryString("sort", "Least Upvotes")
+                )
+              }
               className={buttonStyles}
             >
               Least Upvotes
