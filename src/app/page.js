@@ -8,7 +8,7 @@ import NavBar from "./navigationbar/Navbar";
 export default async function Home({ searchParams }) {
   const { sort, filter } = await searchParams;
   const rows = await fetchProducts(sort);
-  const data = rows.filter(filterCategory);
+  const data = filter ? rows.filter(filterCategory) : rows;
 
   function filterCategory(el) {
     return el.category === filter;
