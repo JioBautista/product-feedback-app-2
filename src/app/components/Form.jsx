@@ -1,7 +1,8 @@
 import deleteFeedback from "../lib/deleteFeedback";
 import Label from "./Label";
-import Select from "./Select";
 import Button from "./Button";
+import SelectCategory from "./SelectCategory";
+import SelectStatus from "./SelectStatus";
 
 export default function Form({ data, fn }) {
   const pStyles = "text-gray-500 font-normal mb-3";
@@ -9,8 +10,6 @@ export default function Form({ data, fn }) {
     null,
     data ? data[0].productid : null
   );
-  const categories = ["Feature", "UI", "UX", "Enhancement", "Bug"];
-  const status = ["Suggestion", "Planned", "In-progress", "Live"];
   return (
     <div className="bg-white px-8 py-10 rounded-md space-y-5">
       {data ? (
@@ -36,7 +35,7 @@ export default function Form({ data, fn }) {
         <Label>
           Category
           <p className={pStyles}>Choose a category for your feedback</p>
-          <Select name={"category"} data={data} option={categories} />
+          <SelectCategory data={data} />
         </Label>
 
         {/* UPDATE STATUS only display Block when defaultValue is true */}
@@ -44,7 +43,7 @@ export default function Form({ data, fn }) {
           <Label>
             Update Status
             <p className={pStyles}>Change feature state</p>
-            <Select name={"status"} option={status} data={data} />
+            <SelectStatus data={data} />
           </Label>
         ) : null}
 
