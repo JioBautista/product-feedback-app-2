@@ -7,6 +7,11 @@ import { useState } from "react";
 
 export default function NavBar({ data }) {
   const [isOpen, setOpen] = useState(false);
+
+  function handleClick() {
+    setOpen(!isOpen);
+  }
+
   return (
     <>
       <div className="bg-gradient-to-r to-[#E84D70] from-[#28A7ED] via-[#A337F6] relative py-5 z-20">
@@ -39,7 +44,7 @@ export default function NavBar({ data }) {
         <>
           <div className="absolute bg-black opacity-25 inset-0 z-10"></div>
           <div className="bg-[#F7F8FD] p-5 absolute right-0 h-screen max-w-[270px] space-y-5 z-10">
-            <Filters />
+            <Filters fn={handleClick} />
             <Roadmap data={data} />
           </div>
         </>

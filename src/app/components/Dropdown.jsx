@@ -1,65 +1,56 @@
 "use client";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
+import Link from "next/link";
 import { useCallback, useState } from "react";
+
 export default function Dropdown() {
   const [isOpen, setOpen] = useState(false);
-  const [sort, isSorted] = useState("Most Upvotes");
-  const buttonStyles = "text-start text-gray-500";
-  const router = useRouter();
+  const [sortBy, isSorted] = useState("Most Upvotes");
+  const linkStyles = "text-start text-gray-500";
   const searchParams = useSearchParams();
   const pathname = usePathname();
+  const sort = [
+    { name: "Most Upvotes", link: "Most Upvotes" },
+    { name: "Least Upvotes", link: "Least Upvotes" },
+    { name: "Most Comments", link: "Most Comments" },
+    { name: "Least Comments", link: "Least Comments" },
+  ];
 
   const createQueryString = useCallback(
     (name, value) => {
       const params = new URLSearchParams(searchParams);
       params.set(name, value);
-      setOpen(!isOpen);
-      isSorted(value);
       return params.toString();
     },
     [searchParams]
   );
 
+  function handleClick(value) {
+    setOpen(!isOpen);
+    isSorted(value);
+  }
+
   return (
     <>
       <div className="text-white">
         <button onClick={() => setOpen(!isOpen)}>
-          Sort by : <span className="font-bold text-sm">{sort}</span>
+          Sort by : <span className="font-bold text-sm">{sortBy}</span>
         </button>
         {isOpen && (
           <div className="absolute -bottom-44 bg-white p-5 rounded-xl flex flex-col gap-5 shadow-2xl">
-            <button
-              onClick={() =>
-                router.push(
-                  pathname + "?" + createQueryString("sort", "Most Upvotes")
-                )
-              }
-              className={buttonStyles}
-            >
-              Most Upvotes
-            </button>
-            <button
-              onClick={() =>
-                router.push(
-                  pathname + "?" + createQueryString("sort", "Least Upvotes")
-                )
-              }
-              className={buttonStyles}
-            >
-              Least Upvotes
-            </button>
-            <button
-              onClick={() => handler("Most Comments")}
-              className={buttonStyles}
-            >
-              Most Comments
-            </button>
-            <button
-              onClick={() => handler("Least Comments")}
-              className={buttonStyles}
-            >
-              Least Comments
-            </button>
+            {sort.map((elements) => (
+              <>
+                <Link
+                  href={
+                    pathname + "?" + createQueryString("sort", elements.link)
+                  }
+                  className={linkStyles}
+                  onClick={() => handleClick(elements.name)}
+                >
+                  {elements.name}
+                </Link>
+              </>
+            ))}
           </div>
         )}
       </div>
