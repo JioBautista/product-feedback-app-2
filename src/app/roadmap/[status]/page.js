@@ -13,7 +13,6 @@ export default async function Tab({ params }) {
   const capitalizedStatus = capitalizeFirstLetter(status);
   const rows = await fetchStatus(capitalizedStatus);
 
-  console.log(rows);
   return (
     <div>
       <Container>
@@ -26,13 +25,15 @@ export default async function Tab({ params }) {
             )
           </h1>
           {rows
-            ? rows.map((items) => (
-                <>
-                  <div className="border-t-indigo-500 border-t-8 rounded-md">
-                    <Product data={items} />
-                  </div>
-                </>
-              ))
+            ? rows.map((items) => {
+                if (items.status === "Planned") {
+                  return <Product data={items} border={"border-t-[#F49F85]"} />;
+                } else if (items.status === "In-progress") {
+                  return <Product data={items} border={"border-t-[#AD1FEA]"} />;
+                } else if (items.status === "Live") {
+                  return <Product data={items} border={"border-t-[#62BCFA]"} />;
+                }
+              })
             : null}
         </div>
       </Container>
