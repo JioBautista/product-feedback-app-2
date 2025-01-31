@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useSearchParams, usePathname } from "next/navigation";
-import { useCallback } from "react";
+import { usePathname } from "next/navigation";
+import createQueryString from "../lib/createQueryString";
 
 export default function Filters({ fn }) {
-  const searchParams = useSearchParams();
   const pathname = usePathname();
+  const queryString = createQueryString();
   const filters = [
     { name: "UI", link: "UI" },
     { name: "UX", link: "UX" },
@@ -16,15 +16,6 @@ export default function Filters({ fn }) {
       link: `Feature`,
     },
   ];
-
-  const createQueryString = useCallback(
-    (name, value) => {
-      const params = new URLSearchParams(searchParams);
-      params.set(name, value);
-      return params.toString();
-    },
-    [searchParams]
-  );
   return (
     <div className="bg-white rounded-lg flex items-center flex-wrap gap-2 p-5">
       <Link
@@ -36,7 +27,7 @@ export default function Filters({ fn }) {
       </Link>
       {filters.map((elements, index) => (
         <Link
-          href={pathname + "?" + createQueryString("filter", elements.link)}
+          href={pathname + "?" + queryString("filter", elements.link)}
           className="px-4 py-2 bg-[#F2F4FF] text-[#4661E6] font-bold rounded-2xl"
           onClick={() => fn()}
         >
