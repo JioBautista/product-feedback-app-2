@@ -1,35 +1,26 @@
 "use client";
-import { useSearchParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useState } from "react";
+import createQueryString from "../lib/createQueryString";
 
 export default function Dropdown() {
   const [isOpen, setOpen] = useState(false);
   const [sortBy, isSorted] = useState("Most Upvotes");
   const linkStyles = "text-start text-gray-500";
-  const searchParams = useSearchParams();
+  const queryString = createQueryString();
   const pathname = usePathname();
   const sort = [
-    { name: "Most Upvotes", link: "Most Upvotes" },
-    { name: "Least Upvotes", link: "Least Upvotes" },
-    { name: "Most Comments", link: "Most Comments" },
-    { name: "Least Comments", link: "Least Comments" },
+    "Most Upvotes",
+    "Least Upvotes",
+    "Most Comments",
+    "Least Comments",
   ];
-
-  const createQueryString = useCallback(
-    (name, value) => {
-      const params = new URLSearchParams(searchParams);
-      params.set(name, value);
-      return params.toString();
-    },
-    [searchParams]
-  );
 
   function handleClick(value) {
     setOpen(!isOpen);
     isSorted(value);
   }
-
   return (
     <>
       <div className="text-white">
@@ -38,16 +29,14 @@ export default function Dropdown() {
         </button>
         {isOpen && (
           <div className="absolute -bottom-44 bg-white p-5 rounded-xl flex flex-col gap-5 shadow-2xl">
-            {sort.map((elements) => (
+            {sort.map((e) => (
               <>
                 <Link
-                  href={
-                    pathname + "?" + createQueryString("sort", elements.link)
-                  }
+                  href={pathname + "?" + queryString("sort", e)}
                   className={linkStyles}
-                  onClick={() => handleClick(elements.name)}
+                  onClick={() => handleClick(e)}
                 >
-                  {elements.name}
+                  {e}
                 </Link>
               </>
             ))}
