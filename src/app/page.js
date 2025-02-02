@@ -8,21 +8,21 @@ import NavBar from "./navigationbar/Navbar";
 export default async function Home({ searchParams }) {
   const { sort, filter } = await searchParams;
   const rows = await fetchProducts(sort);
-  const data = filter ? rows.filter((x) => x.category === filter) : rows;
+  const products = filter ? rows.filter((x) => x.category === filter) : rows;
   return (
     <>
       <NavBar data={rows} />
       <Sort />
       <Container>
         <div className="py-5 space-y-5">
-          {data.map((items) => (
+          {products.map((elements) => (
             <>
-              <div key={items.productid}>
-                <Product data={items} />
+              <div key={elements.productid}>
+                <Product data={elements} />
               </div>
             </>
           ))}
-          {data.length === 0 && (
+          {products.length === 0 && (
             <>
               <EmptyFeedback />
             </>
