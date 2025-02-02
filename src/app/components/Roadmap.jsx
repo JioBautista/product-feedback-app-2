@@ -5,15 +5,18 @@ export default function Roadmap({ data }) {
   const pStyles = "text-gray-500";
   const plannedData = data ? data.filter((x) => x.status === "Planned") : null;
   const inProgressData = data
-    ? data.filter((x) => x.status === "In-Progress")
+    ? data.filter((x) => x.status === "In-progress")
     : null;
 
   const liveData = data ? data.filter((x) => x.status === "Live") : null;
   return (
     <div className="bg-white rounded-md p-5 grid grid-cols-2 gap-2">
       <h1 className="font-bold text-xl">Roadmap</h1>
-      <Link href={"/roadmap"}>
-        <p className="justify-self-end text-[#4661E6] underline">View</p>
+      <Link
+        href={"/roadmap"}
+        className="justify-self-end text-[#4661E6] underline block"
+      >
+        View
       </Link>
       <p className={pStyles}>Planned</p>
       <span className={spanStyles}>{plannedData.length}</span>

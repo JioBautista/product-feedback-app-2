@@ -29,14 +29,14 @@ export default function Dropdown() {
         </button>
         {isOpen && (
           <div className="absolute -bottom-44 bg-white p-5 rounded-xl flex flex-col gap-5 shadow-2xl">
-            {sort.map((e) => (
+            {sort.map((elements) => (
               <>
                 <Link
-                  href={pathname + "?" + queryString("sort", e)}
+                  href={pathname + "?" + queryString("sort", elements)}
                   className={linkStyles}
-                  onClick={() => handleClick(e)}
+                  onClick={() => handleClick(elements)}
                 >
-                  {e}
+                  {elements}
                 </Link>
               </>
             ))}
