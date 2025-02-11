@@ -4,6 +4,7 @@ import Container from "../components/Container";
 import Button from "../components/Button";
 import Link from "next/link";
 import AddComment from "../components/AddComment";
+import Comments from "../components/Comments";
 
 export default async function ProductDetail({ params }) {
   const productid = (await params).productID;
@@ -25,10 +26,7 @@ export default async function ProductDetail({ params }) {
           <Product data={items} />
         ))}
 
-        <div className="bg-white p-5 rounded-md">
-          <h1>This is where the Comments component would render</h1>
-        </div>
-
+        <Comments id={productid} />
         <AddComment />
       </div>
     </Container>

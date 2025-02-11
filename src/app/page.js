@@ -17,7 +17,7 @@ export default async function Home({ searchParams }) {
         <div className="py-5 space-y-5">
           {products.map((elements) => (
             <>
-              <div key={elements.productid}>
+              <div key={elements.id}>
                 <Product data={elements} />
               </div>
             </>
