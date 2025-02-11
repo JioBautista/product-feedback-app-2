@@ -27,7 +27,7 @@ export default async function ProductDetail({ params }) {
         ))}
 
         <Comments id={productid} />
-        <AddComment />
+        <AddComment id={productid} />
       </div>
     </Container>
   );
