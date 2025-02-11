@@ -5,7 +5,7 @@ import Chip from "./Chip";
 export default function Product({ data, border }) {
   return (
     <div className={border ? `border-t-8 rounded-md ${border}` : null}>
-      <Link href={`/${data.productid}`} className="block">
+      <Link href={`/${data.id}`} className="block">
         <div className="bg-white p-8 rounded-md grid grid-cols-2 gap-y-3">
           <p className="font-bold col-span-2">{data.title}</p>
           <p className="text-gray-500 col-span-2">{data.description}</p>

@@ -1,7 +1,6 @@
 import { sql } from "@vercel/postgres";
 
-export default async function fetchProduct(productid) {
-  const { rows } =
-    await sql`SELECT * FROM products WHERE productid = ${productid}`;
+export default async function fetchProduct(id) {
+  const { rows } = await sql`SELECT * FROM products WHERE id = ${id}`;
   return rows;
 }
