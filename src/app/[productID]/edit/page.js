@@ -5,9 +5,9 @@ import fetchProduct from "@/app/lib/fetchProduct";
 import updateFeedback from "@/app/lib/updateFeedback";
 
 export default async function editFeedback({ params }) {
-  const productid = (await params).productID;
-  const rows = await fetchProduct(productid);
-  const updateFeedbackWithID = updateFeedback.bind(null, productid);
+  const id = (await params).productID;
+  const rows = await fetchProduct(id);
+  const updateFeedbackWithID = updateFeedback.bind(null, id);
   return (
     <Container>
       <div className="py-5 space-y-5 max-w-[540px] mx-auto">

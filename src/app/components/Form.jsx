@@ -8,7 +8,7 @@ export default function Form({ data, fn }) {
   const pStyles = "text-gray-500 font-normal mb-3";
   const deleteFeedbackWithID = deleteFeedback.bind(
     null,
-    data ? data[0].productid : null
+    data ? data[0].id : null
   );
   return (
     <div className="bg-white px-8 py-10 rounded-md space-y-5">

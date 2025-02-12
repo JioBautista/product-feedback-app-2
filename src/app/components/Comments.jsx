@@ -1,9 +1,10 @@
 import fetchComments from "../lib/fetchComments";
+import Image from "next/image";
+import Replies from "./Replies";
+import Comment from "./Comment";
 
 export default async function Comments({ id }) {
   const comments = await fetchComments(id);
-
-  console.log(comments);
   return (
     <div className="bg-white p-8 rounded-md space-y-5">
       <h1 className="font-bold text-xl">
@@ -12,14 +13,10 @@ export default async function Comments({ id }) {
       {comments
         ? comments.map((comment) => (
             <>
-              <div key={comment.id} className="border-b-2 space-y-3 pb-5">
-                <div>
-                  <p className="font-bold">{comment.full_name}</p>
-                  <p className="text-gray-500">@{comment.username}</p>
-                </div>
-                <div>
-                  <p className="text-gray-500">{comment.content}</p>
-                </div>
+              <div>
+                <Comment data={comment}>
+                  <Replies id={comment.id} />
+                </Comment>
               </div>
             </>
           ))
