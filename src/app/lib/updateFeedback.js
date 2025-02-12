@@ -1,7 +1,7 @@
 import { sql } from "@vercel/postgres";
 import { redirect } from "next/navigation";
 
-export default async function updateFeedback(productid, formData) {
+export default async function updateFeedback(id, formData) {
   "use server";
   const rawFormData = {
     title: formData.get("title"),
@@ -14,8 +14,7 @@ export default async function updateFeedback(productid, formData) {
   category = ${rawFormData.category},
   status = ${rawFormData.status},
   description = ${rawFormData.description}
-  WHERE productid = ${productid}
+  WHERE id = ${id}
   `;
-  console.log(rawFormData);
   redirect("/");
 }
