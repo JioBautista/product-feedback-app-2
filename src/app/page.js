@@ -9,7 +9,6 @@ export default async function Home({ searchParams }) {
   const { sort, filter } = await searchParams;
   const rows = await fetchProducts(sort);
   const products = filter ? rows.filter((x) => x.category === filter) : rows;
-  console.log(rows);
   return (
     <>
       <NavBar data={rows} />

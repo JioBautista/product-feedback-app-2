@@ -27,7 +27,6 @@ export default function Comment({ children, data }) {
           {data.content}
         </p>
       </div>
-
       {children}
     </div>
   );
