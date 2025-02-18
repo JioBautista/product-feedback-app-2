@@ -1,5 +1,4 @@
 import fetchComments from "../lib/fetchComments";
-import Image from "next/image";
 import Replies from "./Replies";
 import Comment from "./Comment";
 
@@ -15,7 +14,7 @@ export default async function Comments({ id }) {
             <>
               <div>
                 <Comment data={comment}>
-                  <Replies id={comment.id} />
+                  <Replies comment_id={comment.id} />
                 </Comment>
               </div>
             </>

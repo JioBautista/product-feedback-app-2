@@ -3,7 +3,7 @@
 import Image from "next/image";
 import ReplyTo from "./ReplyTo";
 import React from "react";
-export default function Comment({ children, data }) {
+export default function Reply({ data, comment_id }) {
   const [isOpen, setOpen] = React.useState(false);
   return (
     <div key={data.id} className="space-y-3 pb-5">
@@ -37,9 +37,8 @@ export default function Comment({ children, data }) {
           {data.content}
         </p>
       </div>
-      {children}
       {isOpen ? (
-        <ReplyTo comment_id={data.id} reply_to={data.username} />
+        <ReplyTo comment_id={comment_id} reply_to={data.username} />
       ) : null}
     </div>
   );
