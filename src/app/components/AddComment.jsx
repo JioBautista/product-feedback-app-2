@@ -1,8 +1,8 @@
 import Button from "./Button";
 import postComment from "../lib/postComment";
 
-export default async function AddComment({ id }) {
-  const postCommentWithID = postComment.bind(null, id);
+export default async function AddComment({ product_id }) {
+  const postCommentWithID = postComment.bind(null, product_id);
   return (
     <div className="bg-white p-5 rounded-md space-y-5">
       <h1 className="text-2xl font-bold">Add Comment</h1>

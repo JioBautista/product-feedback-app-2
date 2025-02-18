@@ -1,14 +1,12 @@
 import fetchReplies from "../lib/fetchReplies";
-import Comment from "./Comment";
+import Reply from "./Reply";
 
-export default async function Replies({ id }) {
-  const replies = await fetchReplies(id);
-
-  console.log(replies);
+export default async function Replies({ comment_id }) {
+  const replies = await fetchReplies(comment_id);
   if (replies.length > 0) {
     return replies.map((reply) => (
       <div className="pl-8 border-l-2">
-        <Comment data={reply} />
+        <Reply data={reply} comment_id={comment_id} />
       </div>
     ));
   } else {

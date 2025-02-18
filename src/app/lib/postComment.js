@@ -1,7 +1,7 @@
 import { sql } from "@vercel/postgres";
 import { redirect } from "next/navigation";
 
-export default async function postComment(id, formData) {
+export default async function postComment(product_id, formData) {
   "use server";
   const rawFormData = {
     full_name: formData.get("full_name"),
@@ -13,7 +13,7 @@ export default async function postComment(id, formData) {
   ${rawFormData.full_name},
   ${rawFormData.username},
   ${rawFormData.content},
-  ${id}
+  ${product_id}
   )`;
-  return redirect(`/${id}`);
+  return redirect(`/${product_id}`);
 }
