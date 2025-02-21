@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import Chip from "./Chip";
+import fetchComments from "../lib/fetchComments";
 
-export default function Product({ data, border }) {
+export default async function Product({ data, border }) {
+  const comments = await fetchComments(data.id);
   return (
     <div className={border ? `border-t-8 rounded-md ${border}` : null}>
       <Link href={`/${data.id}`} className="block">
@@ -28,7 +30,7 @@ export default function Product({ data, border }) {
               height={16}
               alt="Comments icon"
             />
-            0
+            {comments ? comments.length : 0}
           </Chip>
         </div>
       </Link>

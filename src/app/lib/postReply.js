@@ -18,5 +18,8 @@ export default async function postReply(comment_id, formData) {
     ${rawFormData.content}
     )`;
 
-  return redirect(`/`);
+  const { rows } =
+    await sql`SELECT product_id FROM comments WHERE id = ${comment_id}`;
+
+  return redirect(`/${rows[0].product_id}`);
 }
