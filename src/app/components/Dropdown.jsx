@@ -7,7 +7,7 @@ import createQueryString from "../lib/createQueryString";
 export default function Dropdown() {
   const [isOpen, setOpen] = useState(false);
   const [sortBy, isSorted] = useState("Most Upvotes");
-  const linkStyles = "text-start text-gray-500";
+  const linkStyles = "text-start text-gray-500 hover:text-[#AD1FEA]";
   const queryString = createQueryString();
   const pathname = usePathname();
   const sort = [
