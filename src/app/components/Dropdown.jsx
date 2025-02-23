@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
 import createQueryString from "../lib/createQueryString";
+import Image from "next/image";
 
 export default function Dropdown() {
   const [isOpen, setOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function Dropdown() {
   }
   return (
     <>
-      <div className="text-white">
+      <div className="text-white flex items-center gap-1">
         <button onClick={() => setOpen(!isOpen)}>
           Sort by : <span className="font-bold text-sm">{sortBy}</span>
         </button>
@@ -31,17 +32,26 @@ export default function Dropdown() {
           <div className="absolute -bottom-44 bg-white p-5 rounded-xl flex flex-col gap-5 shadow-2xl">
             {sort.map((elements) => (
               <>
-                <Link
-                  href={pathname + "?" + queryString("sort", elements)}
-                  className={linkStyles}
-                  onClick={() => handleClick(elements)}
-                >
-                  {elements}
-                </Link>
+                <div key={elements}>
+                  <Link
+                    href={pathname + "?" + queryString("sort", elements)}
+                    className={linkStyles}
+                    onClick={() => handleClick(elements)}
+                  >
+                    {elements}
+                  </Link>
+                </div>
               </>
             ))}
           </div>
         )}
+        <Image
+          src={"/icon-arrow-down-white.svg"}
+          width={10}
+          height={6}
+          alt="down arrow"
+          className={`${isOpen ? "rotate-180" : null}`}
+        />
       </div>
     </>
   );

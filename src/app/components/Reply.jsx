@@ -16,17 +16,18 @@ export default function Reply({ data, comment_id }) {
             alt="user icon"
           />
         </div>
-        <div>
+        <div className="grow">
           <p className="font-bold">{data.full_name}</p>
           <p className="text-gray-500">@{data.username}</p>
         </div>
-
-        <p
-          className="font-bold grow text-right text-[#4661E6]"
-          onClick={() => setOpen(!isOpen)}
-        >
-          Reply
-        </p>
+        <div>
+          <p
+            className="font-bold text-right text-[#4661E6] cursor-pointer hover:underline"
+            onClick={() => setOpen(!isOpen)}
+          >
+            Reply
+          </p>
+        </div>
       </div>
 
       <div>

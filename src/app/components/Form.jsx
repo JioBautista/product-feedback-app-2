@@ -28,6 +28,7 @@ export default function Form({ data, fn }) {
             className="px-5 py-3 bg-[#F7F8FD] rounded-md w-full mb-5 font-normal"
             name="title"
             defaultValue={data ? data[0].title : null}
+            required
           />
         </Label>
 
@@ -59,6 +60,7 @@ export default function Form({ data, fn }) {
             className="bg-[#F7F8FD] p-3 rounded-md w-full mb-5 font-normal"
             name="description"
             defaultValue={data ? data[0].description : null}
+            required
           ></textarea>
         </Label>
 

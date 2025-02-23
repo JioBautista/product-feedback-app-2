@@ -24,7 +24,9 @@ export default async function Home({ searchParams }) {
           ))}
           {products.length === 0 && (
             <>
-              <EmptyFeedback />
+              <div>
+                <EmptyFeedback />
+              </div>
             </>
           )}
         </div>
