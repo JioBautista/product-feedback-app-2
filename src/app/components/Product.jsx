@@ -8,10 +8,11 @@ export default async function Product({ data, border }) {
   return (
     <div className={border ? `border-t-8 rounded-md ${border}` : null}>
       <div className="bg-white p-8 rounded-md grid grid-cols-2 gap-y-3">
-        <Link href={`/${data.id}`} className="block">
-          <p className="font-bold col-span-2 hover:text-[#4661E6]">
-            {data.title}
-          </p>
+        <Link
+          href={`/${data.id}`}
+          className="font-bold col-span-2 hover:text-[#4661E6] block"
+        >
+          {data.title}
         </Link>
         <p className="text-gray-500 col-span-2">{data.description}</p>
         <Chip gridPosition={"col-span-2"}>{data.category}</Chip>
