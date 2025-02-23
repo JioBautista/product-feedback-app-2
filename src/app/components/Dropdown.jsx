@@ -48,7 +48,7 @@ export default function Dropdown() {
         <Image
           src={"/icon-arrow-down-white.svg"}
           width={10}
-          height={10}
+          height={6}
           alt="down arrow"
           className={`${isOpen ? "rotate-180" : null}`}
         />
