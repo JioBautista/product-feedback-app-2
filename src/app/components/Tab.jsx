@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 
-export default function Tab({ href, data, text, borderT }) {
+export default function Tab({ href, text, borderT }) {
   const [border, setBorder] = React.useState("border-b-gray border-b-2");
   return (
     <Link
@@ -11,7 +11,7 @@ export default function Tab({ href, data, text, borderT }) {
       onFocus={() => setBorder(borderT)}
       onBlur={() => setBorder("border-b-gray border-b-2")}
     >
-      {text} ({data})
+      {text}
     </Link>
   );
 }
