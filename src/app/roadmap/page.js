@@ -21,29 +21,41 @@ export default async function Roadmap({ searchParams }) {
     // Render
     <div>
       <Container>
-        <div className="space-y-10 py-5">
+        <div className="space-y-3 py-5">
           <h1 className="text-2xl font-bold tracking-wide">
             {capitalizedStatus} ({filtered_products.length})
           </h1>
-          <div>
-            {filtered_products
-              ? filtered_products.map((elements) => {
-                  if (elements.status === "Planned") {
-                    return (
+
+          {filtered_products
+            ? filtered_products.map((elements) => {
+                if (elements.status === "Planned") {
+                  return (
+                    <>
+                      <h2 className="text-gray-500">
+                        Ideas prioritized for research
+                      </h2>
                       <Product data={elements} border={"border-t-[#F49F85]"} />
-                    );
-                  } else if (elements.status === "In-progress") {
-                    return (
+                    </>
+                  );
+                } else if (elements.status === "In-progress") {
+                  return (
+                    <>
+                      <h2 className="text-gray-500">
+                        Currently being developed
+                      </h2>
                       <Product data={elements} border={"border-t-[#AD1FEA]"} />
-                    );
-                  } else if (elements.status === "Live") {
-                    return (
+                    </>
+                  );
+                } else if (elements.status === "Live") {
+                  return (
+                    <>
+                      <h2 className="text-gray-500">Released features</h2>
                       <Product data={elements} border={"border-t-[#62BCFA]"} />
-                    );
-                  }
-                })
-              : null}
-          </div>
+                    </>
+                  );
+                }
+              })
+            : null}
         </div>
       </Container>
     </div>
