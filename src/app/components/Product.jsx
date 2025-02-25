@@ -3,11 +3,14 @@ import Image from "next/image";
 import Chip from "./Chip";
 import fetchComments from "../lib/fetchComments";
 
-export default async function Product({ data, border }) {
+export default async function Product({ data, border, children }) {
   const comments = await fetchComments(data.id);
   return (
     <div className={border ? `border-t-8 rounded-md ${border}` : null}>
-      <div className="bg-white p-8 rounded-md grid grid-cols-2 gap-y-3">
+      <div className="bg-white p-5 rounded-md grid grid-cols-2 gap-y-3">
+        <span className="flex items-center gap-2 text-gray-500">
+          {children}
+        </span>
         <Link
           href={`/${data.id}`}
           className="font-bold col-span-2 hover:text-[#4661E6] block"
