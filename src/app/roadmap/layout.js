@@ -2,6 +2,7 @@ import Link from "next/link";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Tabs from "../components/Tabs";
+import GoBackButton from "../components/GoBackButton";
 
 export default function Layout({ children }) {
   return (
@@ -10,9 +11,10 @@ export default function Layout({ children }) {
         <Container>
           <div className="flex items-center justify-between">
             <div>
-              <Link href={"/"} className="text-sm font-bold">
+              <GoBackButton />
+              {/* <Link href={"/"} className="text-sm font-bold">
                 Go Back
-              </Link>
+              </Link> */}
               <h1 className="text-xl font-bold">Roadmap</h1>
             </div>
 

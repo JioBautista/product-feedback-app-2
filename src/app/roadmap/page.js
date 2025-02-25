@@ -1,6 +1,7 @@
 import Container from "../components/Container";
 import fetchProducts from "../lib/fetchProducts";
 import Product from "../components/Product";
+import Image from "next/image";
 
 export default async function Roadmap({ searchParams }) {
   // 1. Grabs URL searchParams if true
@@ -34,7 +35,15 @@ export default async function Roadmap({ searchParams }) {
                       <h2 className="text-gray-500">
                         Ideas prioritized for research
                       </h2>
-                      <Product data={elements} border={"border-t-[#F49F85]"} />
+                      <Product data={elements} border={"border-t-[#F49F85]"}>
+                        <Image
+                          src={"/icon-orange-oval.png"}
+                          width={8}
+                          height={8}
+                          alt="orange icon"
+                        />
+                        {elements.status}
+                      </Product>
                     </>
                   );
                 } else if (elements.status === "In-progress") {
@@ -43,14 +52,30 @@ export default async function Roadmap({ searchParams }) {
                       <h2 className="text-gray-500">
                         Currently being developed
                       </h2>
-                      <Product data={elements} border={"border-t-[#AD1FEA]"} />
+                      <Product data={elements} border={"border-t-[#AD1FEA]"}>
+                        <Image
+                          src={"/icon-blue-oval.png"}
+                          width={8}
+                          height={8}
+                          alt="blue icon"
+                        />
+                        {elements.status}
+                      </Product>
                     </>
                   );
                 } else if (elements.status === "Live") {
                   return (
                     <>
                       <h2 className="text-gray-500">Released features</h2>
-                      <Product data={elements} border={"border-t-[#62BCFA]"} />
+                      <Product data={elements} border={"border-t-[#62BCFA]"}>
+                        <Image
+                          src={"/icon-purple-oval.png"}
+                          width={8}
+                          height={8}
+                          alt="purple icon"
+                        />
+                        {elements.status}
+                      </Product>
                     </>
                   );
                 }

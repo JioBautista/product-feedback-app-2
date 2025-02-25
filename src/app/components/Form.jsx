@@ -3,6 +3,7 @@ import Label from "./Label";
 import Button from "./Button";
 import SelectCategory from "./SelectCategory";
 import SelectStatus from "./SelectStatus";
+import Image from "next/image";
 
 export default function Form({ data, fn }) {
   const pStyles = "text-gray-500 font-normal mb-3";
@@ -11,7 +12,24 @@ export default function Form({ data, fn }) {
     data ? data[0].id : null
   );
   return (
-    <div className="bg-white px-8 py-10 rounded-md space-y-5">
+    <div className="bg-white px-8 py-10 rounded-md space-y-5 relative">
+      {data ? (
+        <Image
+          className="absolute -top-4 left-5"
+          src={"/icon-edit-feedback.svg"}
+          width={40}
+          height={40}
+          alt="Add feedback icon"
+        />
+      ) : (
+        <Image
+          className="absolute -top-4 left-5"
+          src={"/icon-new-feedback.svg"}
+          width={40}
+          height={40}
+          alt="Edit feedback icon"
+        />
+      )}
       {data ? (
         <h1 className="font-bold mb-5 text-lg">Editing '{data[0].title}'</h1>
       ) : (
