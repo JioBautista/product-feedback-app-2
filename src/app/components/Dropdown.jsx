@@ -24,7 +24,7 @@ export default function Dropdown() {
   }
   return (
     <>
-      <div className="text-white flex items-center gap-1">
+      <div className="text-white flex items-center gap-1 md:grow">
         <button onClick={() => setOpen(!isOpen)}>
           Sort by : <span className="font-bold text-sm">{sortBy}</span>
         </button>
