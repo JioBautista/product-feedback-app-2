@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import Link from "next/link";
 import AddComment from "../components/AddComment";
 import Comments from "../components/Comments";
+import GoBackButton from "../components/GoBackButton";
 
 export default async function ProductDetail({ params }) {
   const product_id = (await params).productID;
@@ -14,14 +15,13 @@ export default async function ProductDetail({ params }) {
     <Container>
       <div className="py-5 space-y-5 relative">
         <div className="flex items-center justify-between">
-          <Link href={"/"} className="p-2 font-bold">
-            Go Back
-          </Link>
+          <GoBackButton />
 
           <Link href={`/${product_id}/edit`}>
             <Button bg={"bg-[#4661E6]"}>Edit Feedback</Button>
           </Link>
         </div>
+
         {product_data.map((product) => (
           <Product data={product} />
         ))}

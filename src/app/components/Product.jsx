@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Chip from "./Chip";
 import fetchComments from "../lib/fetchComments";
+import updateUpvote from "../lib/updateUpvote";
 
 export default async function Product({ data, border, children }) {
   const comments = await fetchComments(data.id);
@@ -31,11 +32,24 @@ export default async function Product({ data, border, children }) {
             alt="Upvotes arrow"
             className="rotate-180"
           />
-          {data.upvotes}
+          {/* UPVOTE BUTTON HIDDEN INPUTS */}
+          <form action={updateUpvote}>
+            <input
+              className="hidden"
+              name="upvotes"
+              defaultValue={data ? data.upvotes : 0}
+            />
+            <input
+              className="hidden"
+              name="id"
+              defaultValue={data ? data.id : null}
+            />
+            <button type="submit">{data.upvotes}</button>
+          </form>
         </Chip>
+
         <Chip gridPosition={"justify-self-end"}>
           <Image
-            className="mr-3"
             src={"/icon-comments.svg"}
             width={18}
             height={16}
