@@ -26,40 +26,42 @@ export default async function Product({ data, border, children }) {
           <p className="text-gray-500 mb-3">{data.description}</p>
 
           {/* FEEDBACK CATEGORY */}
-          <Chip>{data.category}</Chip>
+          <Chip gridPosition={"justify-self-start"}>{data.category}</Chip>
         </div>
 
         {/* 3.FEEDBACK UPVOTES */}
         <Chip
           gridPosition={
-            "hover:bg-[#CFD7FF] active:bg-[#4661E6] active:text-[#F2F4FF] cursor-pointer md:order-1 md:self-start"
+            "justify-self-start md:order-1 md:self-start hover:bg-[#CFD7FF] active:bg-[#4661E6] active:text-[#F2F4FF] cursor-pointer"
           }
         >
-          <Image
-            src={"/icon-arrow-down.svg"}
-            width={11}
-            height={7}
-            alt="Upvotes arrow"
-            className="rotate-180"
-          />
-          {/* 4.UPVOTE BUTTON HIDDEN INPUTS */}
-          <form action={updateUpvote}>
-            <input
-              className="hidden"
-              name="upvotes"
-              defaultValue={data ? data.upvotes : 0}
+          <div className="flex items-center justify-between gap-2 md:flex-col">
+            <Image
+              src={"/icon-arrow-down.svg"}
+              width={11}
+              height={7}
+              alt="Upvotes arrow"
+              className="rotate-180"
             />
-            <input
-              className="hidden"
-              name="id"
-              defaultValue={data ? data.id : null}
-            />
-            <button type="submit">{data.upvotes}</button>
-          </form>
+            {/* 4.UPVOTE BUTTON HIDDEN INPUTS */}
+            <form action={updateUpvote}>
+              <input
+                className="hidden"
+                name="upvotes"
+                defaultValue={data ? data.upvotes : 0}
+              />
+              <input
+                className="hidden"
+                name="id"
+                defaultValue={data ? data.id : null}
+              />
+              <button type="submit">{data.upvotes}</button>
+            </form>
+          </div>
         </Chip>
 
         {/* 5.FEEDBACK COMMENTS ICON */}
-        <Chip gridPosition={"justify-self-end md:order-3"}>
+        <div className="flex items-center gap-3 justify-self-end font-bold md:order-3">
           <Image
             src={"/icon-comments.svg"}
             width={18}
@@ -67,7 +69,7 @@ export default async function Product({ data, border, children }) {
             alt="Comments icon"
           />
           {comments ? comments.length : 0}
-        </Chip>
+        </div>
       </div>
     </div>
   );
