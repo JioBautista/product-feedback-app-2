@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-[#F7F8FD]`}
       >
-        <div className="border-2 border-black">{children}</div>
+        <div>{children}</div>
       </body>
     </html>
   );

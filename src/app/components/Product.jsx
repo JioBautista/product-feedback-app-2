@@ -17,7 +17,7 @@ export default async function Product({ data, border, children }) {
           {/* 1.FEEDBACK TITLE */}
           <Link
             href={`/${data.id}`}
-            className="font-bold col-span-2 hover:text-[#4661E6] block"
+            className="font-bold hover:text-[#4661E6] block"
           >
             {data.title}
           </Link>
