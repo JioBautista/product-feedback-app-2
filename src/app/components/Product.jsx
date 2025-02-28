@@ -8,7 +8,7 @@ export default async function Product({ data, border, children }) {
   const comments = await fetchComments(data.id);
   return (
     <div className={border ? `border-t-8 rounded-md ${border}` : null}>
-      <div className="bg-white p-5 rounded-md grid grid-cols-2 gap-y-3 md:flex md:items-center md:justify-between md:gap-5">
+      <div className="bg-white p-5 rounded-md grid grid-cols-2 gap-y-3 md:flex md:items-center md:gap-10">
         {/* <span className="flex items-center gap-2 text-gray-500">
           {children}
         </span> */}
@@ -24,15 +24,16 @@ export default async function Product({ data, border, children }) {
 
           {/* 2.FEEDBACK DESCRIPTION */}
           <p className="text-gray-500 mb-3">{data.description}</p>
-
           {/* FEEDBACK CATEGORY */}
-          <Chip gridPosition={"justify-self-start"}>{data.category}</Chip>
+          <Chip>
+            <p>{data.category}</p>
+          </Chip>
         </div>
 
         {/* 3.FEEDBACK UPVOTES */}
         <Chip
           gridPosition={
-            "justify-self-start md:order-1 md:self-start hover:bg-[#CFD7FF] active:bg-[#4661E6] active:text-[#F2F4FF] cursor-pointer"
+            "justify-self-start hover:bg-[#CFD7FF] active:bg-[#4661E6] active:text-[#F2F4FF] cursor-pointer md:order-1 md:self-start"
           }
         >
           <div className="flex items-center justify-between gap-2 md:flex-col">
