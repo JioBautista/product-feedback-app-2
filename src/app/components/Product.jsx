@@ -26,7 +26,7 @@ export default async function Product({ data, border, children }) {
           <p className="text-gray-500 mb-3">{data.description}</p>
           {/* FEEDBACK CATEGORY */}
           <Chip>
-            <p>{data.category}</p>
+            <span>{data.category}</span>
           </Chip>
         </div>
 
