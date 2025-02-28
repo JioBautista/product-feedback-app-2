@@ -31,7 +31,7 @@ export default function Reply({ data, comment_id }) {
       </div>
 
       <div>
-        <p className="text-gray-500">
+        <p className="text-gray-500 md:pl-12">
           {data.replyto ? (
             <span className="font-bold text-[#4661E6]">{data.replyto}</span>
           ) : null}{" "}

@@ -13,7 +13,7 @@ export default async function Home({ searchParams }) {
   return (
     <>
       <NavBar data={rows} />
-      <Sort data={rows} />
+      <Sort data={products} />
       <Container>
         <div className="py-5 space-y-5">
           {products.map((elements) => (
