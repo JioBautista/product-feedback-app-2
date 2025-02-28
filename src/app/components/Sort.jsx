@@ -3,7 +3,7 @@ import AddFeedback from "./AddFeedback";
 import Dropdown from "./Dropdown";
 import Image from "next/image";
 
-export default function Sort({ data }) {
+export default async function Sort({ data }) {
   return (
     <div className="bg-[#373f68] py-5 relative md:bg-transparent">
       <Container>

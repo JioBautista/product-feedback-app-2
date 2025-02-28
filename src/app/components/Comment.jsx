@@ -6,8 +6,9 @@ import React from "react";
 export default function Comment({ children, data }) {
   const [isOpen, setOpen] = React.useState(false);
   return (
-    <div key={data.id} className="space-y-3 pb-5">
+    <div key={data.id} className="pb-5">
       <div className="flex items-center gap-3">
+        {/* 1. User Icon */}
         <div className="bg-[#F7F8FD] rounded-full p-1 border-2">
           <Image
             src={"/icons8-user-50.png"}
@@ -16,11 +17,13 @@ export default function Comment({ children, data }) {
             alt="user icon"
           />
         </div>
+
+        {/* 2. Full name and username */}
         <div className="grow">
           <p className="font-bold">{data.full_name}</p>
           <p className="text-gray-500">@{data.username}</p>
         </div>
-
+        {/* 3. Reply button */}
         <div>
           <p
             className="font-bold text-right text-[#4661E6] hover:underline cursor-pointer"
@@ -31,15 +34,15 @@ export default function Comment({ children, data }) {
         </div>
       </div>
 
-      <div>
-        <p className="text-gray-500">
-          {data.replyto ? (
-            <span className="font-bold text-[#4661E6]">{data.replyto}</span>
-          ) : null}{" "}
-          {data.content}
-        </p>
+      {/* 4. Comment */}
+      <div className="md:pl-12 pb-5 mb-5">
+        <p className="text-gray-500">{data.content}</p>
       </div>
+
+      {/* 5.Replies component */}
       {children}
+
+      {/* 6.ReplyTo component based on true or false value */}
       {isOpen ? (
         <ReplyTo comment_id={data.id} reply_to={data.username} />
       ) : null}
