@@ -91,7 +91,7 @@ export default function Form({ data, fn }) {
         />
 
         {/* FORM BUTTONS */}
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 md:flex-row-reverse md:justify-start">
           <Button bg={"bg-[#AD1FEA]"}>
             {data ? "Save Changes" : "Add Feedback"}
           </Button>
