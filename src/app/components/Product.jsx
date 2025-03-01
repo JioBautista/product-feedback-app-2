@@ -8,7 +8,7 @@ export default async function Product({ data, border, children }) {
   const comments = await fetchComments(data.id);
   return (
     <div className={border ? `border-t-8 rounded-md ${border}` : null}>
-      <div className="bg-white p-5 rounded-md grid grid-cols-2 gap-y-3 md:flex md:items-center md:gap-10">
+      <div className="bg-white p-5 rounded-md grid grid-cols-2 gap-y-3 md:flex md:items-center md:gap-5">
         <div className="col-span-2 md:order-2 md:grow">
           {children}
           {/* 1.FEEDBACK TITLE */}

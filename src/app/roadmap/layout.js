@@ -25,9 +25,11 @@ export default function Layout({ children }) {
         </Container>
       </div>
 
-      <Container>
-        <Tabs />
-      </Container>
+      <div className="md:hidden">
+        <Container>
+          <Tabs />
+        </Container>
+      </div>
       {children}
     </div>
   );
