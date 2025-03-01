@@ -2,6 +2,7 @@ import Container from "../components/Container";
 import fetchProducts from "../lib/fetchProducts";
 import Product from "../components/Product";
 import Image from "next/image";
+import Planned from "../components/Planned";
 
 export default async function Roadmap({ searchParams }) {
   // 1. Grabs URL searchParams if true
@@ -13,74 +14,25 @@ export default async function Roadmap({ searchParams }) {
     return String(x).charAt(0).toUpperCase() + String(x).slice(1);
   }
   // 4. Condtional statement
-  const capitalizedStatus = status ? capitalizeFirstLetter(status) : "Planned";
+  const capitalizedStatus = status ? capitalizeFirstLetter(status) : "";
   // 5. Another conditional statement that filters the data based on the status variable
-  const filtered_products = status
-    ? products_data.filter((x) => x.status === capitalizedStatus)
-    : products_data.filter((x) => x.status === "Planned");
+  const filtered_products = products_data.filter(
+    (x) => x.status === capitalizedStatus
+  );
   return (
     // Render
     <div>
       <Container>
         <div className="space-y-3 py-5">
-          <h1 className="text-2xl font-bold tracking-wide">
-            {capitalizedStatus} ({filtered_products.length})
-          </h1>
+          {status === "planned" ? (
+            <div>
+              <Planned data={products_data} />
+            </div>
+          ) : null}
 
-          {filtered_products
-            ? filtered_products.map((elements) => {
-                if (elements.status === "Planned") {
-                  return (
-                    <>
-                      <h2 className="text-gray-500">
-                        Ideas prioritized for research
-                      </h2>
-                      <Product data={elements} border={"border-t-[#F49F85]"}>
-                        <Image
-                          src={"/icon-orange-oval.png"}
-                          width={8}
-                          height={8}
-                          alt="orange icon"
-                        />
-                        {elements.status}
-                      </Product>
-                    </>
-                  );
-                } else if (elements.status === "In-progress") {
-                  return (
-                    <>
-                      <h2 className="text-gray-500">
-                        Currently being developed
-                      </h2>
-                      <Product data={elements} border={"border-t-[#AD1FEA]"}>
-                        <Image
-                          src={"/icon-blue-oval.png"}
-                          width={8}
-                          height={8}
-                          alt="blue icon"
-                        />
-                        {elements.status}
-                      </Product>
-                    </>
-                  );
-                } else if (elements.status === "Live") {
-                  return (
-                    <>
-                      <h2 className="text-gray-500">Released features</h2>
-                      <Product data={elements} border={"border-t-[#62BCFA]"}>
-                        <Image
-                          src={"/icon-purple-oval.png"}
-                          width={8}
-                          height={8}
-                          alt="purple icon"
-                        />
-                        {elements.status}
-                      </Product>
-                    </>
-                  );
-                }
-              })
-            : null}
+          <div className="hidden md:block">
+            <Planned data={products_data} />
+          </div>
         </div>
       </Container>
     </div>

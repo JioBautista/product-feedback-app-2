@@ -9,11 +9,8 @@ export default async function Product({ data, border, children }) {
   return (
     <div className={border ? `border-t-8 rounded-md ${border}` : null}>
       <div className="bg-white p-5 rounded-md grid grid-cols-2 gap-y-3 md:flex md:items-center md:gap-10">
-        {/* <span className="flex items-center gap-2 text-gray-500">
-          {children}
-        </span> */}
-
         <div className="col-span-2 md:order-2 md:grow">
+          {children}
           {/* 1.FEEDBACK TITLE */}
           <Link
             href={`/${data.id}`}
