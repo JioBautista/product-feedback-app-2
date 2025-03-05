@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Filters from "../components/Filters";
 import Roadmap from "../components/Roadmap";
-import Container from "../components/Container";
 import { useState } from "react";
 
 export default function NavBar({ data }) {
@@ -14,48 +13,46 @@ export default function NavBar({ data }) {
 
   return (
     <>
-      <div className="bg-gradient-to-r to-[#E84D70] from-[#28A7ED] via-[#A337F6] relative py-5 z-20 md:bg-none">
-        <Container>
-          <div className="flex items-center justify-between md:grid md:grid-cols-3 md:gap-3">
-            <div className="md:bg-gradient-to-r md:to-[#E84D70] md:from-[#28A7ED] md:via-[#A337F6] md:p-5 md:self-stretch md:rounded-lg md:flex md:flex-col md:justify-end">
-              <h1 className="text-white font-bold">Feedback Board</h1>
-            </div>
-
-            {/* MOBILE OPEN/CLOSE ICONS */}
-            {isOpen ? (
-              // CLOSE BUTTON
-              <button className="p-2" onClick={() => setOpen(!isOpen)}>
-                <Image
-                  src="/mobile/icon-close.svg"
-                  width={18}
-                  height={17}
-                  alt="close icon"
-                />
-              </button>
-            ) : (
-              // OPEN BUTTON DISPLAY HIDDEN ON MEDIUM MEDIA QUERY
-              <button
-                className="p-2 block md:hidden"
-                onClick={() => setOpen(!isOpen)}
-              >
-                <Image
-                  src="/mobile/icon-hamburger.svg"
-                  width={20}
-                  height={17}
-                  alt="hambuger icon"
-                />
-              </button>
-            )}
-
-            {/* TWO DIVS HIDDEN ON MOBILE MEDIA QUERY */}
-            <div className="hidden md:block">
-              <Filters />
-            </div>
-            <div className="hidden md:block">
-              <Roadmap data={data} />
-            </div>
+      <div className="bg-gradient-to-r to-[#E84D70] from-[#28A7ED] via-[#A337F6] relative p-5 z-20 md:bg-none">
+        <div className="flex items-center justify-between md:grid md:grid-cols-3 md:gap-3 lg:flex lg:flex-col lg:items-stretch">
+          <div className="md:bg-gradient-to-r md:to-[#E84D70] md:from-[#28A7ED] md:via-[#A337F6] md:p-5 md:self-stretch md:rounded-lg md:flex md:flex-col md:justify-end">
+            <h1 className="text-white font-bold">Feedback Board</h1>
           </div>
-        </Container>
+
+          {/* MOBILE OPEN/CLOSE ICONS */}
+          {isOpen ? (
+            // CLOSE BUTTON
+            <button className="p-2" onClick={() => setOpen(!isOpen)}>
+              <Image
+                src="/mobile/icon-close.svg"
+                width={18}
+                height={17}
+                alt="close icon"
+              />
+            </button>
+          ) : (
+            // OPEN BUTTON DISPLAY HIDDEN ON MEDIUM MEDIA QUERY
+            <button
+              className="p-2 block md:hidden"
+              onClick={() => setOpen(!isOpen)}
+            >
+              <Image
+                src="/mobile/icon-hamburger.svg"
+                width={20}
+                height={17}
+                alt="hambuger icon"
+              />
+            </button>
+          )}
+
+          {/* TWO DIVS HIDDEN ON MOBILE MEDIA QUERY */}
+          <div className="hidden md:block">
+            <Filters />
+          </div>
+          <div className="hidden md:block">
+            <Roadmap data={data} />
+          </div>
+        </div>
       </div>
 
       {/* SIDE BAR FOR MOBILE */}
