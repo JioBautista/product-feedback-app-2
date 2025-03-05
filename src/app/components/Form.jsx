@@ -102,11 +102,6 @@ export default function Form({ data, fn }) {
           ) : null}
         </div>
       </form>
-
-      {/* SEPARATE FORM FOR DELETE BUTTON ON EDIT
-      <form action={deleteFeedbackWithID}>
-        {data && <Button bg={"bg-[#D73737]"}>Delete</Button>}
-      </form> */}
     </div>
   );
 }

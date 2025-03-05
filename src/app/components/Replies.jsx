@@ -1,7 +1,5 @@
 import fetchReplies from "../lib/fetchReplies";
 import Reply from "./Reply";
-import Comment from "./Comment";
-
 export default async function Replies({ comment_id }) {
   const replies = await fetchReplies(comment_id);
   if (replies.length > 0) {
